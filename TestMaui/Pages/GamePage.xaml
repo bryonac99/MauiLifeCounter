@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestMaui.Pages.GamePage"
+             Title="GamePage">
+
+    <ContentPage.Resources>
+        <x:String x:Key="minus">&#xf068;</x:String>
+        <x:String x:Key="plus">&#x2b;</x:String>
+        <x:String x:Key="dice-six">&#xf526;</x:String>
+        <x:String x:Key="divide">&#xf529;</x:String>
+        <x:String x:Key="euro">&#xf153;</x:String>
+    </ContentPage.Resources>
+    <StackLayout>
+        <StackLayout HeightRequest="50">
+           
+        </StackLayout>
+
+        <StackLayout HeightRequest="120" Rotation="180">
+            <Label Text="Player1"
+                       FontSize="40"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            <Label Text="8000"
+                           FontSize="40"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+        </StackLayout>
+        <StackLayout x:Name="myStackLayout" IsVisible="{Binding IsMyStackLayoutVisible}" Rotation="180">
+                <FlexLayout AlignContent="Start"  HeightRequest="70"  AlignItems="Start" Direction="Row" Wrap="Wrap" JustifyContent="SpaceEvenly">
+                    <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" Command="{Binding Minus}">
+                        <ImageButton.Source >
+                            <FontImageSource FontFamily="FAS"  Glyph="{StaticResource minus}" ></FontImageSource>
+                        </ImageButton.Source>
+                    </ImageButton>
+                <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                    <ImageButton.Source >
+                        <FontImageSource FontFamily="FAS"  Glyph="{StaticResource plus}" Size="15"></FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+            </FlexLayout>
+            <FlexLayout JustifyContent="SpaceAround">
+                <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                    <ImageButton.Source >
+                        <FontImageSource FontFamily="FAS"  Glyph="{StaticResource dice-six}" ></FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+
+                <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                    <ImageButton.Source >
+                        <FontImageSource FontFamily="FAS"  Glyph="{StaticResource divide}" Size="15"></FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+                <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10">
+                    <ImageButton.Source >
+                        <FontImageSource FontFamily="FAS"  Glyph="{StaticResource euro}" ></FontImageSource>
+                    </ImageButton.Source>
+                </ImageButton>
+            </FlexLayout>
+        </StackLayout>
+
+        <AbsoluteLayout Rotation="180" IsVisible="{Binding IsPlayer1OperationsVisible}" HorizontalOptions="Center">
+            <FlexLayout WidthRequest="150" AlignContent="SpaceBetween"  AlignItems="Center" Direction="Row" Wrap="Wrap" JustifyContent="SpaceAround" >
+
+
+                <Button Text="1" Margin="0,0,0,5"></Button>
+                <Button Text="2" Margin="0,0,0,5"></Button>
+                <Button Text="3" Margin="0,0,0,5"></Button>
+                <Button Text="4" Margin="0,0,0,5"></Button>
+                <Button Text="5" Margin="0,0,0,5"></Button>
+                <Button Text="6" Margin="0,0,0,5"></Button>
+                <Button Text="7" Margin="0,0,0,5"></Button>
+                <Button Text="8" Margin="0,0,0,5"></Button>
+                <Button Text="9" Margin="0,0,0,5"></Button>
+                <Button Text="B" Command="{Binding Back}" Margin="0,0,0,5"></Button>
+                <Button Text="0" Margin="0,0,0,5"></Button>
+                <Button Text="=" Margin="0,0,0,5"></Button>
+            </FlexLayout>
+        </AbsoluteLayout>
+
+        <StackLayout Margin="30">
+            <Label Text="Player2"
+                       FontSize="40"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+            <Label Text="8000"
+                       FontSize="40"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+        <FlexLayout AlignContent="Start"  HeightRequest="70"  AlignItems="Start" Direction="Row" Wrap="Wrap" JustifyContent="SpaceEvenly">
+            <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                <ImageButton.Source >
+                    <FontImageSource FontFamily="FAS"  Glyph="{StaticResource minus}" ></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                <ImageButton.Source >
+                    <FontImageSource FontFamily="FAS"  Glyph="{StaticResource plus}" Size="15"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+        </FlexLayout>
+        <FlexLayout JustifyContent="SpaceAround">
+            <ImageButton  BackgroundColor="{StaticResource Primary}"  WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                <ImageButton.Source >
+                    <FontImageSource FontFamily="FAS"  Glyph="{StaticResource dice-six}" ></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+
+            <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10" >
+                <ImageButton.Source >
+                    <FontImageSource FontFamily="FAS"  Glyph="{StaticResource divide}" Size="15"></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="45" HeightRequest="45" CornerRadius="10">
+                <ImageButton.Source >
+                    <FontImageSource FontFamily="FAS" Glyph="{StaticResource euro}" ></FontImageSource>
+                </ImageButton.Source>
+            </ImageButton>
+        </FlexLayout>
+
+        <StackLayout VerticalOptions="EndAndExpand" WidthRequest="100" Margin="10">
+            <Button Text="Reset"></Button>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>
