@@ -1,4 +1,3 @@
-using AndroidX.Lifecycle;
 using TestMaui.ViewModel;
 
 namespace TestMaui.Pages;
@@ -13,6 +12,10 @@ public partial class GamePage : ContentPage
         BindingContext = vm;
 
         myStackLayout.SetBinding(IsVisibleProperty, nameof(vm.IsMyStackLayoutVisible));
+        myStackLayoutP2.SetBinding(IsVisibleProperty, nameof(vm.IsMyStackLayoutVisibleP2));
+        NavigationPage.SetHasBackButton(this, false);
+        NavigationPage.SetHasNavigationBar(this, false);
+
     }
 
 }
