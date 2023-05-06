@@ -32,7 +32,7 @@
                     </ImageButton>
                 </FlexLayout>
                 <FlexLayout  JustifyContent="SpaceAround" Margin="0,20,0,0">
-                    <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="55" HeightRequest="55" CornerRadius="10" >
+                    <ImageButton  BackgroundColor="{StaticResource Primary}" Command="{Binding RollDiceP1}" WidthRequest="55" HeightRequest="55" CornerRadius="10" >
                         <ImageButton.Source >
                             <FontImageSource FontFamily="FAS"  Glyph="{StaticResource dice-six}" ></FontImageSource>
                         </ImageButton.Source>
@@ -43,11 +43,29 @@
                             <FontImageSource FontFamily="FAS"  Glyph="{StaticResource divide}"></FontImageSource>
                         </ImageButton.Source>
                     </ImageButton>
-                    <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="55" HeightRequest="55" CornerRadius="10">
+                    <ImageButton  BackgroundColor="{StaticResource Primary}" Command="{Binding RollCoinP1}"  WidthRequest="55" HeightRequest="55" CornerRadius="10">
                         <ImageButton.Source >
                             <FontImageSource FontFamily="FAS"  Glyph="{StaticResource euro}" ></FontImageSource>
                         </ImageButton.Source>
                     </ImageButton>
+                </FlexLayout>
+            </StackLayout>
+
+            <StackLayout Rotation="180" IsVisible="{Binding IsDiceP1LayoutVisible}" HorizontalOptions="Center">
+                <Label FontSize="70" Text="{Binding DiceP1}"  HorizontalOptions="Center">
+                </Label>
+                <FlexLayout Direction="Row">
+                    <Button WidthRequest="90" Margin="5" Command="{Binding GoBackP1}"  FontSize="20" HeightRequest="60" Text="Back"></Button>
+                    <Button WidthRequest="90" Margin="5" Command="{Binding DiceAgainP1}"  FontSize="14" HeightRequest="60" Text="Try again"></Button>
+                </FlexLayout>
+            </StackLayout>
+
+            <StackLayout Rotation="180" IsVisible="{Binding IsCoinP1LayoutVisible}" HorizontalOptions="Center">
+                <Label FontSize="70" Text="{Binding CoinP1}"  HorizontalOptions="Center">
+                </Label>
+                <FlexLayout Direction="Row">
+                    <Button WidthRequest="90" Margin="5" Command="{Binding GoBackP1}"  FontSize="20" HeightRequest="60" Text="Back"></Button>
+                    <Button WidthRequest="90" Margin="5" Command="{Binding CoinAgainP1}"  FontSize="14" HeightRequest="60" Text="Try again"></Button>
                 </FlexLayout>
             </StackLayout>
 
@@ -79,6 +97,7 @@
                 <Button Text="=" WidthRequest="60" FontSize="20" Grid.Row="3" Grid.Column="2" Command="{Binding ResultP1}" Margin="5"></Button>
             </Grid>
         </StackLayout>
+        
         <StackLayout Rotation="180" HeightRequest="120" >
             <Label Text="{Binding LifePointsP1}"
                            FontSize="50"
@@ -108,7 +127,7 @@
                     </ImageButton>
                 </FlexLayout>
                 <FlexLayout JustifyContent="SpaceAround" Margin="0,20,0,0">
-                    <ImageButton  BackgroundColor="{StaticResource Primary}"  WidthRequest="55" HeightRequest="55" CornerRadius="10" >
+                    <ImageButton  BackgroundColor="{StaticResource Primary}" Command="{Binding RollDiceP2}" IsEnabled="{Binding IsRollDiceButtonEnabled}" WidthRequest="55" HeightRequest="55" CornerRadius="10" >
                         <ImageButton.Source >
                             <FontImageSource FontFamily="FAS"  Glyph="{StaticResource dice-six}" ></FontImageSource>
                         </ImageButton.Source>
@@ -119,7 +138,7 @@
                             <FontImageSource FontFamily="FAS"  Glyph="{StaticResource divide}" ></FontImageSource>
                         </ImageButton.Source>
                     </ImageButton>
-                    <ImageButton  BackgroundColor="{StaticResource Primary}" WidthRequest="55" HeightRequest="55" CornerRadius="10">
+                    <ImageButton  BackgroundColor="{StaticResource Primary}" Command="{Binding RollCoinP2}" WidthRequest="55" HeightRequest="55" CornerRadius="10">
                         <ImageButton.Source >
                             <FontImageSource FontFamily="FAS" Glyph="{StaticResource euro}" ></FontImageSource>
                         </ImageButton.Source>
@@ -156,6 +175,26 @@
                 <Button Text="0" WidthRequest="60" FontSize="20" Grid.Row="3" Grid.Column="1" CommandParameter="0" Command="{Binding OnNumberClickedP2}" Margin="8"></Button>
                 <Button Text="=" WidthRequest="60" FontSize="20" Grid.Row="3" Grid.Column="2" Command="{Binding ResultP2}" Margin="8"></Button>
             </Grid>
+
+            <StackLayout IsVisible="{Binding IsDiceP2LayoutVisible}" HorizontalOptions="Center">
+                <Label FontSize="70" Text="{Binding DiceP2}"  HorizontalOptions="Center">
+                </Label>
+                <FlexLayout Direction="Row">
+                    <Button WidthRequest="90" Margin="5" Command="{Binding GoBackP2}"  FontSize="20" HeightRequest="60" Text="Back"></Button>
+                    <Button WidthRequest="90" Margin="5" Command="{Binding DiceAgainP2}"  FontSize="14" HeightRequest="60" Text="Try again"></Button>
+                </FlexLayout>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding IsCoinP2LayoutVisible}" HorizontalOptions="Center">
+                <Label FontSize="70" Text="{Binding CoinP2}"  HorizontalOptions="Center">
+                </Label>
+                <FlexLayout Direction="Row">
+                    <Button WidthRequest="90" Margin="5" Command="{Binding GoBackP2}"  FontSize="20" HeightRequest="60" Text="Back"></Button>
+                    <Button WidthRequest="90" Margin="5" Command="{Binding CoinAgainP2}"  FontSize="14" HeightRequest="60" Text="Try again"></Button>
+                </FlexLayout>
+            </StackLayout>
+
+
 
         </StackLayout>
 

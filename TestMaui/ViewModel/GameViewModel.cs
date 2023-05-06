@@ -18,6 +18,11 @@ namespace TestMaui.ViewModel
         public ICommand PlusP1Command => new Command(OnPlusP1Clicked);
         public ICommand ResultP1 => new Command(OnResultP1Clicked);
         public ICommand Back { get; }
+        public ICommand GoBackP1 => new Command(OnGoBackP1Clicked);
+        public ICommand RollDiceP1 => new Command(OnDiceP1Clicked);
+        public ICommand RollCoinP1 => new Command(OnCoinP1Clicked);
+        public ICommand DiceAgainP1 => new Command(OnDiceAgainP1Clicked);
+        public ICommand CoinAgainP1 => new Command(OnCoinAgainP1Clicked);
 
         public ICommand TestCommand => new Command(OnPlusP1Clicked);
 
@@ -46,6 +51,12 @@ namespace TestMaui.ViewModel
         public ICommand PlusP2Command => new Command(OnPlusP2Clicked);
         public ICommand ResultP2 => new Command(OnResultP2Clicked);
         public ICommand BackP2 { get; }
+        public ICommand GoBackP2 => new Command(OnGoBackP2Clicked);
+        public ICommand RollDiceP2 => new Command(OnDiceP2Clicked);
+        public ICommand RollCoinP2 => new Command(OnCoinP2Clicked);
+
+        public ICommand DiceAgainP2 => new Command(OnDiceAgainP2Clicked);
+        public ICommand CoinAgainP2 => new Command(OnCoinAgainP2Clicked);
 
         public ICommand OnNumberClickedP2 => new Command<string>(OnNumericButtonClickedP2);
 
@@ -79,8 +90,21 @@ namespace TestMaui.ViewModel
 
         private bool _isPlayer1OperationsVisible = false;
         private bool _isPlayer2OperationsVisible = false;
+
+        private bool _isDiceP1LayoutVisible = false;
+        private bool _isDiceP2LayoutVisible = false;
+
+        private bool _isCoinP1LayoutVisible = false;
+        private bool _isCoinP2LayoutVisible = false;
+
         private double _lifePointsP1 { get; set; }
         private double _savePointsP1 { get; set; }
+
+        private int _diceP1 { get; set; }
+        private int _diceP2 { get; set; }
+
+        private string _coinP1 { get; set; }
+        private string _coinP2 { get; set; }
 
         private double _lifePointsP2 { get; set; }
         private double _savePointsP2 { get; set; }
@@ -107,6 +131,26 @@ namespace TestMaui.ViewModel
             {
                 _isMyStackLayoutVisibleP2 = value;
                 OnPropertyChanged(nameof(IsMyStackLayoutVisibleP2));
+            }
+        }
+
+        public bool IsDiceP1LayoutVisible
+        {
+            get { return _isDiceP1LayoutVisible; }
+            set
+            {
+                _isDiceP1LayoutVisible = value;
+                OnPropertyChanged(nameof(IsDiceP1LayoutVisible));
+            }
+        }
+
+        public bool IsCoinP1LayoutVisible
+        {
+            get { return _isCoinP1LayoutVisible; }
+            set
+            {
+                _isCoinP1LayoutVisible = value;
+                OnPropertyChanged(nameof(IsCoinP1LayoutVisible));
             }
         }
 
@@ -149,6 +193,26 @@ namespace TestMaui.ViewModel
             }
         }
 
+        public int DiceP1
+        {
+            get { return _diceP1; }
+            set
+            {
+                _diceP1 = value;
+                OnPropertyChanged(nameof(DiceP1));
+            }
+        }
+
+        public string CoinP1
+        {
+            get { return _coinP1; }
+            set
+            {
+                _coinP1 = value;
+                OnPropertyChanged(nameof(CoinP1));
+            }
+        }
+
         public double LifePointsP2
         {
             get { return _lifePointsP2; }
@@ -166,6 +230,46 @@ namespace TestMaui.ViewModel
             {
                 _savePointsP2 = value;
                 OnPropertyChanged(nameof(SavePointsP2));
+            }
+        }
+
+        public int DiceP2
+        {
+            get { return _diceP2; }
+            set
+            {
+                _diceP2 = value;
+                OnPropertyChanged(nameof(DiceP2));
+            }
+        }
+
+        public string CoinP2
+        {
+            get { return _coinP2; }
+            set
+            {
+                _coinP2 = value;
+                OnPropertyChanged(nameof(CoinP2));
+            }
+        }
+
+        public bool IsDiceP2LayoutVisible
+        {
+            get { return _isDiceP2LayoutVisible; }
+            set
+            {
+                _isDiceP2LayoutVisible = value;
+                OnPropertyChanged(nameof(IsDiceP2LayoutVisible));
+            }
+        }
+
+        public bool IsCoinP2LayoutVisible
+        {
+            get { return _isCoinP2LayoutVisible; }
+            set
+            {
+                _isCoinP2LayoutVisible = value;
+                OnPropertyChanged(nameof(IsCoinP2LayoutVisible));
             }
         }
 
@@ -237,6 +341,29 @@ namespace TestMaui.ViewModel
             MinusP1 = false;
             PlusP1 = false;
         }
+        private void OnDiceP1Clicked()
+        {
+            IsMyStackLayoutVisible = false;
+            IsDiceP1LayoutVisible = true;
+            DiceP1 = new Random().Next(1, 7);
+        }
+        private void OnDiceAgainP1Clicked()
+        {
+            DiceP1 = new Random().Next(1, 7);
+        }
+
+        private void OnCoinP1Clicked()
+        {
+            IsMyStackLayoutVisible = false;
+            IsCoinP1LayoutVisible = true;
+            var numero = new Random().Next(0, 2);
+            CoinP1 = numero == 0 ? "head" : "cross";
+        }
+        private void OnCoinAgainP1Clicked()
+        {
+            var numero = new Random().Next(0, 2);
+            CoinP1 = numero == 0 ? "head" : "cross";
+        }
 
         private void OnBackClicked()
         {
@@ -254,6 +381,13 @@ namespace TestMaui.ViewModel
             }
         }
 
+        private void OnGoBackP1Clicked()
+        {
+            IsMyStackLayoutVisible = true;
+            IsDiceP1LayoutVisible = false;
+            IsCoinP1LayoutVisible = false;
+        }
+
         private void OnMinusP2Clicked()
         {
             IsMyStackLayoutVisibleP2 = false;
@@ -261,6 +395,32 @@ namespace TestMaui.ViewModel
             MinusP2 = true;
             SavePointsP2 = LifePointsP2;
             LifePointsP2 = 0;
+        }
+
+        private void OnDiceP2Clicked()
+        {
+            IsMyStackLayoutVisibleP2 = false;
+            IsDiceP2LayoutVisible = true;
+            DiceP2 = new Random().Next(1,7);
+        }
+
+        private void OnDiceAgainP2Clicked()
+        {
+            DiceP2 = new Random().Next(1, 7);
+        }
+
+        private void OnCoinP2Clicked()
+        {
+            IsMyStackLayoutVisibleP2 = false;
+            IsCoinP2LayoutVisible = true;
+            var numero = new Random().Next(0, 2);
+            CoinP2 = numero == 0 ? "head" : "cross";
+        }
+
+        private void OnCoinAgainP2Clicked()
+        {
+            var numero = new Random().Next(0, 2);
+            CoinP2 = numero == 0 ? "head" : "cross";
         }
 
         private void OnPlusP2Clicked()
@@ -313,6 +473,13 @@ namespace TestMaui.ViewModel
                 int newLifePointsInt = lifePointsInt / 10;
                 LifePointsP2 = (double)newLifePointsInt;
             }
+        }
+
+        private void OnGoBackP2Clicked()
+        {
+            IsMyStackLayoutVisibleP2 = true;
+            IsDiceP2LayoutVisible = false;
+            IsCoinP2LayoutVisible = false;
         }
 
         private void OnResetClicked()
